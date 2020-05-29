@@ -1,5 +1,8 @@
 package backendAirBean;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -30,10 +33,17 @@ public class CustomerService {
 
 	@GET
 	@Path("/all")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces("application/json")
 	public String getAllCustomers() {
 
-		String allCustomers = "cc.getAllCustomers()";
+		String allCustomers = "{\"id\":1, \"name\":\"caspar Sylwan\", \"email\":\"casparsylwan@gmail.com \", \"order\":[], \"orderHistory\":[]}";
+		JSONObject jsonObject = null;
+		try {
+		     jsonObject = new JSONObject(allCustomers);
+		     
+		}catch (JSONException err){
+		     
+		}
 
 		return allCustomers;
 	}
