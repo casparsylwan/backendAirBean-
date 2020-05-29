@@ -36,7 +36,7 @@ public class CustomerService {
 	@Produces("application/json")
 	public String getAllCustomers() {
 
-		String allCustomers = "{\"id\":1, \"name\":\"caspar Sylwan\", \"email\":\"casparsylwan@gmail.com \", \"order\":[], \"orderHistory\":[]}";
+		String allCustomers = "{\"id\":1, \"name\":\"caspar Sylwan\", \"email\":\"casparsylwan@gmail.com \", \"order\":[], \"orderHistory\":[{\"id\":\"#123456\", \"sum\": 443, \"date\":\"20/12/12\"}]}";
 		JSONObject jsonObject = null;
 		try {
 		     jsonObject = new JSONObject(allCustomers);

@@ -9,9 +9,9 @@ public class Customer {
 	
 	String name;
 	
-	List order = new ArrayList<>();
+	List<String> order = new ArrayList<>();
 	
-	List orderHistory = new ArrayList<>();
+	List<String> orderHistory = new ArrayList<>();
 	
 	String email;
 	
