@@ -96,14 +96,26 @@ public class CustomerService {
 //		"cc.updateCustomer(customerJson, id)";
 		return "customerJson";
 	}
+	
+	
+	@POST
+	@Path("/new")
+	@Produces("application/json")
+	public String setNewOrder(String customerJson ) {
+		
+		System.out.println(customerJson);
+//		cc.saveNewCustomer(customerJson);
+		return "{\"id\":\"#123456\", \"sum\": 443, \"date\":\"20/12/12\"}";
+	}
 
 	@POST
 	@Path("/new")
-	@Produces(MediaType.APPLICATION_JSON)
-	public void saveNewCustomer(String customerJson ) {
+	@Produces("application/json")
+	public String saveNewCustomer(String customerJson ) {
 		
-		System.out.println("Här är jag");
+		System.out.println(customerJson);
 //		cc.saveNewCustomer(customerJson);
+		return "{\"id\":\"#123456\", \"sum\": 443, \"date\":\"20/12/12\"}";
 	}
 	
 //	@GET
