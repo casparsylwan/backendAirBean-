@@ -3,6 +3,7 @@ package backendAirBean;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import Controller.CustomerController;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -16,7 +17,7 @@ import jakarta.ws.rs.core.MediaType;
 @Path("/customer")
 public class CustomerService {
 
-//	CustomerController cc; 
+	CustomerController cc = new CustomerController(); 
 
 
 //	public CustomerService(CustomerController cc) {
@@ -99,13 +100,13 @@ public class CustomerService {
 	
 	
 	@POST
-	@Path("/new")
+	@Path("/order/new")
 	@Produces("application/json")
 	public String setNewOrder(String customerJson ) {
 		
 		System.out.println(customerJson);
 //		cc.saveNewCustomer(customerJson);
-		return "{\"id\":\"#123456\", \"sum\": 443, \"date\":\"20/12/12\"}";
+		return "{\"id\":\"#123456\", \"sum\": 443, \"date\":\"20/12/10\"}";
 	}
 
 	@POST
@@ -114,9 +115,24 @@ public class CustomerService {
 	public String saveNewCustomer(String customerJson ) {
 		
 		System.out.println(customerJson);
-//		cc.saveNewCustomer(customerJson);
-		return "{\"id\":\"#123456\", \"sum\": 443, \"date\":\"20/12/12\"}";
+		String customerStr = cc.saveCustomer(customerJson);
+		return customerStr;
+				//"{\"id\":1, \"name\":\"caspar Sylwan\", \"email\":\"casparsylwan@gmail.com \", \"order\":[], \"orderHistory\":[{\"id\":\"#123456\", \"sum\": 443, \"date\":\"20/12/12\"}]}"; //customerJson;//  "{\"id\":\"#123456\", \"sum\": 443, \"date\":\"20/12/12\"}";
+				//"{\"id\":\"#123456\", \"sum\": 443, \"date\":\"20/12/12\"}";
 	}
+	
+	@POST
+	@Path("/login")
+	@Produces("application/json")
+	public String login(String customerJson ) {
+		
+		String customerJ = cc.getCustomer( customerJson );
+		
+		return customerJ;
+				//"{\"id\":1, \"name\":\"caspar Sylwan\", \"email\":\"casparsylwan@gmail.com \", \"order\":[], \"orderHistory\":[{\"id\":\"#123456\", \"sum\": 443, \"date\":\"20/12/12\"}]}"; //customerJson;//  "{\"id\":\"#123456\", \"sum\": 443, \"date\":\"20/12/12\"}";
+	}
+	
+	
 	
 //	@GET
 //	@Path("/order")

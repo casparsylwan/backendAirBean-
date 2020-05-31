@@ -2,6 +2,12 @@ package Model;
 
 import java.util.Date;
 
+import javax.persistence.Embeddable;
+
+
+
+
+@Embeddable
 public class Order {
 	
 	Integer id;
