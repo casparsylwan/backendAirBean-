@@ -104,8 +104,8 @@ public class CustomerService {
 	@Produces("application/json")
 	public String setNewOrder(String customerJson ) {
 		
-		cc.setNewOrder(customerJson);
-		return "{\"id\":\"#123456\", \"sum\": 443, \"date\":\"20/12/10\"}";
+	    String customerStr = cc.setNewOrder(customerJson);
+		return customerStr;//"{\"id\":\"#123456\", \"sum\": 443, \"date\":\"20/12/10\"}";
 	}
 
 	@POST

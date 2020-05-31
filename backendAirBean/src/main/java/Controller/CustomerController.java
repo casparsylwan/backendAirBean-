@@ -58,12 +58,13 @@ public class CustomerController {
 		return customerJson;
 	}
 	
-	public void setNewOrder(String customerJson) {
+	public String setNewOrder(String customerJson) {
 		
 		JSONArray orderArray = new JSONObject(customerJson).getJSONObject("order").getJSONArray("order");
 		String email = new JSONObject(customerJson).getJSONObject("order").getString("email");
 		System.out.println(email);
 		Customer customer = db.getByKey(email);
+		Integer orderId = 19043 + customer.getOrderHistory().size();
 		Order orders = new Order();
 		Integer sum = 0;
 		
@@ -75,11 +76,20 @@ public class CustomerController {
 			
 		}
 		orders.setSum(sum);
-		orders.setId(19043);
+		orders.setId(orderId);
 		orders.setDate(new Date());
 		
 		customer.getOrderHistory().add(orders);
 		db.updateCustomer(customer);
+		
+		try {
+			customerJson = om.writeValueAsString(customer);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return customerJson;
 		
 	}
 
